@@ -10,6 +10,15 @@ getTime = () => {
   
 }
 
+timerInterval = (base, power) => {
+    return secondDayEquivalence(base, power) * (1 / (base**2))
+}
+
+secondDayEquivalence = (base, power) => {
+    let secondsInOneDay = 86400
+    return secondsInOneDay / (base ** power)
+}
+
 getBoffTimeFactor = (base, digits) => {
   let new_seconds = Math.pow(base, digits);
   let cpt_factor = new_seconds / 86400.0;
