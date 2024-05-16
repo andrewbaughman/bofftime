@@ -2,20 +2,37 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>BoffTime</title>
+		<title>UpTick Web</title>
         <script src="./wordlist.js"></script>
         <script src="./bofftime.js"></script>
-		<!-- <script src="./script.js"></script> -->
 		<script>
 let base = 10
 let power = 5
 let inst = setInterval(updateTimeText, timerInterval(base, power));
 
+function updateRadix() {
+	let baseSlider = document.getElementById('radixSlider');
+	base = baseSlider.value;
+	document.getElementById('radixSliderLabel').innerHTML = base;
+}
+
+function updateDigits() {
+	let digitsSlider = document.getElementById('digitsSlider');
+	power = digitsSlider.value;
+	document.getElementById('digitsSliderLabel').innerHTML = power;
+}
+
 function updateTimeText() {
 	let timeText = document.getElementById("time");
-	const base = document.getElementById("inputRadix").value
-	const power = document.getElementById("inputPower").value
+	let dayLength = document.getElementById("dayLength");
+	let tickDuration = document.getElementById("tickDuration");
+	let systemName = document.getElementById("systemName")
+	const base = document.getElementById("radixSlider").value
+	const power = document.getElementById("digitsSlider").value
   	timeText.innerHTML = boffTime(getTime(), base, power);
+	dayLength.innerHTML = "1 day = 1" + "0".repeat(power) + " ticks";
+	tickDuration.innerHTML = "1 tick = " + secondDayEquivalence(base, power).toFixed(3) + " seconds";
+	systemName.innerHTML = "r" + base + "d" + power;
 }
 
 function toggleHiddenExplanation() {
@@ -36,11 +53,12 @@ function toggleHiddenClass(element) {
 		<style>
 body {
 	text-align: center;
+	background: black;
 }
 
 #explanation-text {
 	margin: auto;
-	width: 50%;
+	width: 70%;
 	text-align: left;
 }
 
@@ -51,30 +69,35 @@ body {
 .hidden {
 	display: none;
 }
+
+.white {
+	color: white;
+}
 		</style>
 	</head>
 	<body>
-		<h1>Uptick Demonstration</h1>
-		<h2 id="time"></h2>
-		<p id="dayLength"></p>
-		<p id="tickDuration"></p>
+		<h1 class="white">Uptick Demonstration</h1>
+		<h2 class="white" id="time" style="font-size: 60px; margin: 0;"></h2>
+		<p class="white"><span>Name: </span><span id="systemName">r10d5</span></p>
+		<p class="white" id="dayLength"></p>
+		<p class="white" id="tickDuration"></p>
 		<div class="slider">
-			<p>Radix</p>
-			<input type="text" id="inputRadix" value="10">
+			<p class="white"><span>Radix: </span><span id="radixSliderLabel">10</span></p>
+			<input type="range" min="2" max="36" value="10" step="1" class="slider" oninput="updateRadix()" id="radixSlider">
 		</div>
 		<div class="slider">
-			<p>Digits</p>
-			<input type="text" id="inputPower" value="5">
+			<p class="white"><span>Digits: </span><span id="digitsSliderLabel">5</span></p>
+			<input type="range" min="1" max="8" value="5" step="1" class="slider" oninput="updateDigits()" id="digitsSlider">
 		</div>
 		<button id="toggle-explanation" onclick="toggleHiddenExplanation()">Show/Hide Explanation</button>
-		<h2 id="explanation-title">Explanation</h2>
-		<p id="explanation-text">Uptick shows you the current time of day. Time in Uptick looks different because it's not counting up to 12 or 24 hours. It's counting up to 100,000 ticks.
+		<h2 class="white" id="explanation-title">Explanation</h2>
+		<p class="white" id="explanation-text">Uptick shows you the current time of day. Time in Uptick looks different because it's not counting up to 12 or 24 hours. By default, it counts up to 100,000 ticks.
 			<br><br>
 			Uptick uses Uniform Place-value Time, so it represents the time of day as a simple place-value number, a number of ticks.
 			<br><br>	
-			By default, the status box shows there are 100,000 ticks in a day and each tick lasts 0.864 seconds.
+			By default, there are 100,000 ticks in a day and each tick lasts 0.864 seconds. I call this pattern r10d5 since it uses a radix of 10 and represents all whole-number times of the day with 5 digits. 
 			<br><br>
-			You can tap the status box to change the place-value system and tap it again to hide the controls. Hide this explanation by clicking the Show/Hide Explanation button.
+			You can use the sliders to change the clock's configuration. Hide this explanation by clicking the Show/Hide Explanation button.
 			</p>
 	</body>
 </html>
