@@ -1,3 +1,6 @@
+# Installation of Web Tool
+Since the web tool is just a file, download this repo and simply open the index.html file directly in a browser. 
+
 # BoffTime
 This repo is for basic command line tools to express new ideas related to UPT so that they can be explored quickly and without undue hassle. In the past, I've spent long amounts of time making an app for any idea I think of. I'd like to do things other than making odd time apps, but I'd still like to explore these ideas when I get them. Enter this repo.
 
