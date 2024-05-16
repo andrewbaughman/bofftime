@@ -24,3 +24,5 @@ That being said, departing the mixed radix system for a true place-value system 
 A while after I came up with this solution as a means to make a base 16 clock, I realized that this method could be used with any combination of radix and power, so I created things like the tools in this repo, as well as a few iOS apps, so demonstrate the idea. 
 
 It may not be the most practical thing in the world, but it sure is cool. 
+
+P.S. This is different from the [decimal time](https://en.wikipedia.org/wiki/Decimal_time) made during the French Revoluation, because this is not just base 10 time. It's base anything time. 
