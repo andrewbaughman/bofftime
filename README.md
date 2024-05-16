@@ -1,5 +1,5 @@
 # BoffTime
-This repo is for basic command line tools to express new ideas related to bofftime so that they can be explored quickly and without undue hassle. In the past, I've spent long amounts of time making an app for any idea I think of. I'd like to do things other than making odd time apps, but I'd still like to explore these ideas when I get them. Enter this repo.
+This repo is for basic command line tools to express new ideas related to Uniform Positional Time so that they can be explored quickly and without undue hassle. In the past, I've spent long amounts of time making an app for any idea I think of. I'd like to do things other than making odd time apps, but I'd still like to explore these ideas when I get them. Enter this repo.
 
 It'll just be JavaScript functions. Yep that's all I need so I can work on it from literally anywhere with a browser.
 
